@@ -10,7 +10,9 @@ div.navbar-header img {
     margin-right: 7px;
 }
 
-
+div.navbar-collapse img {
+    height: 28px;
+}
 /* all-melons listing */
 
 div.melon-summary img {
