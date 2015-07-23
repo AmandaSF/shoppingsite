@@ -73,14 +73,15 @@ def add_to_cart(id):
     When a melon is added to the cart, redirect browser to the shopping cart
     page and display a confirmation message: 'Successfully added to cart'.
     """
-    id_number = model.Melon.id
+    id_number = model.Melon.id(id)
     cart_contents = []
 
-    if session.new 
+    if session.new:
+        session[cart_contents.append] 
 
-    
+    # http://code.runnable.com/Uhf58hcCo9RSAACs/using-sessions-in-flask-for-python
 
-    session[cart_contents] = 
+    # session[cart_contents] = 
 
     # TODO: Finish shopping cart functionality
     #   - use session variables to hold cart list
