@@ -59,9 +59,20 @@ def show_melon(id):
 @app.route("/cart")
 def shopping_cart():
     """Display content of shopping cart."""
+    melons_bought = {}
+    list_of_ids = session['cart']
+    #loop over list of ids querying the database for each id
+    for item in list_of_ids:
+        melon_info = model.Melon.get_by_id(item)
+        print melon_info
+        # melon_name = melon_info.common_name
+        # price
 
     # TODO: Display the contents of the shopping cart.
     #   - The cart is a list in session containing melons added
+
+    """Cythina's suggestion; for loop that builds dict of quantities take keys 
+    of that dict build 2nd dict for loop iterating over keys and getting obect pass both to jinja template """
 
     return render_template("cart.html")
 
@@ -73,20 +84,20 @@ def add_to_cart(id):
     When a melon is added to the cart, redirect browser to the shopping cart
     page and display a confirmation message: 'Successfully added to cart'.
     """
-    id_number = model.Melon.id(id)
-    cart_contents = []
 
-    if session.new:
-        session[cart_contents.append] 
+    if 'cart' in session:
+        session['cart'].append(id)
+    else:
+        session['cart'] = [id]
+ 
 
-    # http://code.runnable.com/Uhf58hcCo9RSAACs/using-sessions-in-flask-for-python
+    flash('Your purchase has been added to the cart')
+    # return shopping_cart()
+    return redirect('/cart')
 
-    # session[cart_contents] = 
+    #  Finish shopping cart functionality
+    #  use session variables to hold cart list
 
-    # TODO: Finish shopping cart functionality
-    #   - use session variables to hold cart list
-
-    return "Oops! This needs to be implemented!"
 
 
 @app.route("/login", methods=["GET"])
